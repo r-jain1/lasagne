@@ -1,0 +1,42 @@
+{% set version = "0.1" %}
+
+package:
+  name: lasagne
+  version: {{ version }} 
+
+source:
+  fn: Lasagne-{{ version }}.tar.gz
+  url: https://pypi.python.org/packages/98/bf/4b2336e4dbc8c8859c4dd81b1cff18eef2066b4973a1bd2b0ca2e5435f35/Lasagne-{{ version }}.tar.gz
+  md5: 44212b92bf5f3b1be3021fa0b64b5fdb
+
+build:
+  skip: True # [py>34]
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.6.2
+    - scipy >=0.11
+    - theano
+
+  run:
+    - python
+    - numpy >=1.6.2
+    - scipy  >=0.11
+    - theano
+test:
+  # Python imports
+  imports:
+    - lasagne
+    - lasagne.layers
+    - lasagne.theano_extensions
+
+
+about:
+  home: https://github.com/Lasagne/Lasagne
+  license: MIT
+  license_file: LICENSE
+  summary: A lightweight library to build and train neural networks in Theano
+  dev_url: https://github.com/Lasagne/Lasagne
+  doc_url: http://lasagne.readthedocs.org/
